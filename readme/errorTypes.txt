@@ -1,0 +1,7 @@
+errorTypes
+
+1. improperDataType
+2. dataNotFound
+3. pathNotFound
+4. improperValue
+5. configurationUnavailable
