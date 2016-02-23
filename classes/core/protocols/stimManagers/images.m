@@ -1,4 +1,4 @@
-classdef images
+classdef images<stimManager
     properties
         directory = '';
         background=0;
@@ -54,7 +54,7 @@ classdef images
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'images',stimManager());
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -206,7 +206,7 @@ classdef images
                     end
 
 
-                    s = class(s,'images',stimManager(varargin{4},varargin{5},varargin{6},varargin{7}));
+                    
 
                     validateImages(s); %error if can't load images or bad format
 

@@ -1,4 +1,4 @@
-classdef freeDrinks
+classdef freeDrinks<trialManager
     
     properties
         freeDrinkLikelihood=0;
@@ -18,7 +18,7 @@ classdef freeDrinks
 
                     
                     a=trialManager();
-                    t = class(t,'freeDrinks',a);
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'freeDrinks'))
@@ -59,7 +59,6 @@ classdef freeDrinks
 
                     a=trialManager(varargin{1},varargin{4},args{5},d,args{6},args{7},args{8},args{9},args{10},args{11},args{12},args{13});
 
-                    t = class(t,'freeDrinks',a);
                 otherwise
                     error('Wrong number of input arguments')
             end
@@ -94,7 +93,7 @@ classdef freeDrinks
         
         function out=stationOKForTrialManager(t,s)
             if isa(s,'station')
-                out = getNumPorts(s)>=2;
+                out = s.numPorts>=2;
             else
                 error('need a station object')
             end

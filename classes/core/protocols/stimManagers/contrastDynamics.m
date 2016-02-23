@@ -1,4 +1,4 @@
-classdef contrastDynamics
+classdef contrastDynamics<stimManager
     
     properties
         background = 0.5;
@@ -61,7 +61,7 @@ classdef contrastDynamics
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'contrastDynamics',stimManager());
+                    
                 case 1
                     % if input is of this class type
                     if (isa(varargin{1},'contrastDynamics'))
@@ -96,7 +96,7 @@ classdef contrastDynamics
                         s.LEDParams = LEDParams
                     end
 
-                    s = class(s,'contrastDynamics',stimManager(varargin{4},varargin{5},varargin{6},varargin{7}));
+                    
                 otherwise
                     error('invalid number of input arguments');
             end

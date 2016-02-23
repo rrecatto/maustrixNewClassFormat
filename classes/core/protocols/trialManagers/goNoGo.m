@@ -1,4 +1,4 @@
-classdef goNoGo
+classdef goNoGo<trialManager
     
     properties
         percentCorrectionTrials=0;
@@ -16,7 +16,7 @@ classdef goNoGo
                 case 0
                     % if no input arguments, create a default object
                     a=trialManager();
-                    t = class(t,'goNoGo',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -66,7 +66,7 @@ classdef goNoGo
 
                     a=trialManager(varargin{1},varargin{4},args{5},d,args{6},args{7},args{8},args{9},args{10},args{11},args{12},args{13});
 
-                    t = class(t,'goNoGo',a);
+                    
 
                 otherwise
                     nargin

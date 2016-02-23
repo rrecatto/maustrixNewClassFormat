@@ -11,6 +11,7 @@ screenNum=[];
 pportaddr=[];
 
 for i=1:length(machines)
+
     id=machines{i}{1};
     path=fullfile(dataPath, 'Stations',sprintf('station%s',id));
     mac=machines{i}{2};

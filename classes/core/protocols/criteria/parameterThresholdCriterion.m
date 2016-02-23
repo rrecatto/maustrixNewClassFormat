@@ -1,4 +1,4 @@
-classdef parameterThresholdCriterion
+classdef parameterThresholdCriterion<criterion
     %UNTITLED4 Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -18,7 +18,7 @@ classdef parameterThresholdCriterion
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'parameterThresholdCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'parameterThresholdCriterion'))
@@ -45,7 +45,7 @@ classdef parameterThresholdCriterion
                         error('threshold must a single number')
                     end
 
-                    s = class(s,'parameterThresholdCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end
@@ -145,7 +145,7 @@ classdef parameterThresholdCriterion
                     % if no input arguments, create a default object
                     s.trialsPerMin=0;
                     s.consecutiveMins=0;
-                    s = class(s,'rateCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'rateCriterion'))
@@ -160,7 +160,7 @@ classdef parameterThresholdCriterion
                     else
                         error('trialsPerMin and consecutiveMins must be >= 0')
                     end
-                    s = class(s,'rateCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

@@ -3,6 +3,16 @@ classdef trainingStep
     properties
         svnRevURL = [];
         svnRevNum = [];
+        trialManager = trialManager();
+        stimManager = stimManager();
+        criterion = criterion();
+        scheduler = scheduler();
+        stepName = '';
+
+        previousSchedulerState=0;
+        trialNum=0;
+        sessionRecords =[];
+        
         svnCheckMode = 'session'; % default means we only check for an svn update once per session
     end
     
@@ -14,20 +24,10 @@ classdef trainingStep
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    t.trialManager = trialManager();
-                    t.stimManager = stimManager();
-                    t.criterion = criterion();
-                    t.scheduler = scheduler();
-                    t.stepName = '';
-
-                    t.previousSchedulerState=0;
-                    t.trialNum=0;
-                    t.sessionRecords =[];
                     %sessionStarts=sessionRecords(:,1);
                     %sessionStops=sessionRecords(:,2);
                     %trialsCompleted=sessionRecords(:,3);  % so far this session
 
-                    t = class(t,'trainingStep');
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'trainingStep'))
@@ -78,7 +78,7 @@ classdef trainingStep
                         %trialsCompleted=sessionRecords(:,3);  % so far this session
 
                         if stimMgrOKForTrialMgr(t.stimManager,t.trialManager)
-                            t = class(t,'trainingStep');
+
                         else
                             class(t.stimManager)
                             class(t.trialManager)

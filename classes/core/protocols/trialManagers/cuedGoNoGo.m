@@ -1,4 +1,4 @@
-classdef cuedGoNoGo
+classdef cuedGoNoGo<trialManager
     
     properties
     end
@@ -19,7 +19,7 @@ classdef cuedGoNoGo
                     % if no input arguments, create a default object
                     a=trialManager();
                     t=struct([]); 
-                    t = class(t,'cuedGoNoGo',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -49,7 +49,7 @@ classdef cuedGoNoGo
                     %a=trialManager(varargin{1},varargin{3},args{4},d,args{5},args{6},args{7},args{8},args{9},args{10},args{11},args{12}); % old is wrong now
                     a=trialManager(varargin{1},varargin{2},args{3},d,args{4},args{5},args{6},args{7},args{8},args{9},args{10},args{11}); % this is better
 
-                    t = class(t,'cuedGoNoGo',a);
+                    
 
                 otherwise
                     nargin

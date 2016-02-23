@@ -1,4 +1,4 @@
-classdef autopilot <trialManager
+classdef autopilot<trialManager
     properties
         % nothing new defined here
     end

@@ -1,4 +1,4 @@
-classdef phaseReverse
+classdef phaseReverse<stimManager
     
     properties
         contrasts = [];
@@ -46,7 +46,7 @@ classdef phaseReverse
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'phaseReverse',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'phaseReverse'))
@@ -131,7 +131,7 @@ classdef phaseReverse
                         end
                     end
 
-                    s = class(s,'phaseReverse',stimManager(varargin{11},varargin{12},varargin{13},varargin{14}));
+                    
                 otherwise
                     nargin
                     error('Wrong number of input arguments')

@@ -1,4 +1,4 @@
-classdef whiteNoise
+classdef whiteNoise<stimManager
     
     properties
         distribution = [];
@@ -35,7 +35,7 @@ classdef whiteNoise
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'whiteNoise',stimManager());
+                    
                 case 1
                     % if input is of this class type
                     if (isa(varargin{1},'whiteNoise'))
@@ -221,7 +221,7 @@ classdef whiteNoise
                         end
                     end
 
-                    s = class(s,'whiteNoise',stimManager(varargin{9},varargin{10},varargin{11},varargin{12}));
+                    
                 otherwise
                     error('invalid number of input arguments');
             end

@@ -1,4 +1,4 @@
-classdef freeDrinksAlternate
+classdef freeDrinksAlternate<trialManager
     
     properties
     end
@@ -23,7 +23,7 @@ classdef freeDrinksAlternate
                     % freedrinks
                     a = freeDrinks(varargin{:});
                     t.derivedFrom = 'freeDrinks';
-                    t = class(t,'freeDrinksAlternate',a);
+                    
             end
         end
     end

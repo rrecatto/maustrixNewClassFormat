@@ -1,4 +1,4 @@
-classdef reinforcedAutopilot
+classdef reinforcedAutopilot<trialManager
     
     properties
         percentCorrectionTrials=0;
@@ -19,7 +19,7 @@ classdef reinforcedAutopilot
                     % if no input arguments, create a default object
 
                     a=trialManager();
-                    t = class(t,'reinforcedAutopilot',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -54,7 +54,7 @@ classdef reinforcedAutopilot
 
                     a=trialManager(varargin{2},varargin{3},args{4},d,args{5},args{6},args{7},args{8},args{9},args{10},args{11},args{12});
 
-                    t = class(t,'reinforcedAutopilot',a);
+                    
 
                 otherwise
                     nargin

@@ -4,7 +4,7 @@ classdef soundClip
         sampleRate = 44100;
         msLength = 500;
         msMinSoundDuration = 100;
-        numSamples = t.sampleRate*t.msLength/1000;
+        numSamples = 44100*500/1000;
         amplitude = 1.0; % Not currently specified by default
         fundamentalFreqs = [];
         maxFreq = 0;
@@ -25,7 +25,7 @@ classdef soundClip
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    t = class(t,'soundClip');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'soundClip'))
@@ -49,8 +49,6 @@ classdef soundClip
 
                         t.type = varargin{2};
 
-
-                        t = class(t,'soundClip');
                     else
                         error('type for 2 args must be binaryWhiteNoise gaussianWhiteNoise uniformWhiteNoise empty')
                     end
@@ -100,8 +98,6 @@ classdef soundClip
                     else
                         error('type for 4 args must be allOctaves, tritones, or dualChannel')
                     end
-
-                    t = class(t,'soundClip');
 
                 otherwise
                     error('Wrong number of input arguments')

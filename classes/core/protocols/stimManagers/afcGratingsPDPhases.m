@@ -1,4 +1,4 @@
-classdef afcGratingsPDPhases
+classdef afcGratingsPDPhases<stimManager
 
     properties
         pixPerCycs = [];
@@ -59,7 +59,7 @@ classdef afcGratingsPDPhases
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'afcGratingsPDPhases',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'afcGratingsPDPhases'))
@@ -307,7 +307,7 @@ classdef afcGratingsPDPhases
                         keyboard
                         error('need this for sure');
                     end
-                    s = class(s,'afcGratingsPDPhases',stimManager(maxWidth,maxHeight,scaleFactor,interTrialLuminance));
+                    
                 otherwise
                     nargin
                     error('Wrong number of input arguments')

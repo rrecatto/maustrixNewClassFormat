@@ -113,6 +113,7 @@ end
 
 background=0;
 ypos=0;
+keyboard
 ims=dir(fullfile(imageDir,'*.png'));
 if isempty(ims)
     error('couldn''t find image directory')

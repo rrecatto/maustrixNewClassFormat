@@ -16,7 +16,7 @@ classdef eyeLinkTracker
             switch nargin
                 case 0
                     % if no input arguments, create a default object  
-                    et = class(et,'eyeLinkTracker',eyeTracker());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'eyeLinkTracker'))
@@ -25,7 +25,7 @@ classdef eyeLinkTracker
                         error('Input argument is not a eyeLinkTracker object')
                     end
                case 2
-                    et = class(et,'eyeLinkTracker',eyeTracker(varargin{1},varargin{2}));
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

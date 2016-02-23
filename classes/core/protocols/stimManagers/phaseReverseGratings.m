@@ -1,4 +1,4 @@
-classdef phaseReverseGratings
+classdef phaseReverseGratings<stimManager
     
     properties
         pixPerCycs = [];
@@ -63,7 +63,7 @@ classdef phaseReverseGratings
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'phaseReverseGratings',phaseReverse());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'phaseReverseGratings'))
@@ -178,11 +178,9 @@ classdef phaseReverseGratings
 
 
                     if nargin==19
-                        s = class(s,'phaseReverseGratings',phaseReverse(varargin{6},varargin{7},varargin{8},varargin{9},varargin{10},varargin{11},varargin{12},...
-                        varargin{13},varargin{14},varargin{15},varargin{16},varargin{17},varargin{18},varargin{19}));
+                        
                     elseif nargin==20
-                        s = class(s,'phaseReverseGratings',phaseReverse(varargin{6},varargin{7},varargin{8},varargin{9},varargin{10},varargin{11},varargin{12},...
-                        varargin{13},varargin{14},varargin{15},varargin{16},varargin{17},varargin{18},varargin{19},varargin{20}));
+                        
                     elseif nargin==21
                         % check for doCombos argument first (it decides other error checking)
                         if islogical(varargin{21})
@@ -196,8 +194,7 @@ classdef phaseReverseGratings
                         else
                             error('unknown way to specify doCombos. its either just a logical or a cell length 3.');                    
                         end
-                        s = class(s,'phaseReverseGratings',phaseReverse(varargin{6},varargin{7},varargin{8},varargin{9},varargin{10},varargin{11},varargin{12},...
-                            varargin{13},varargin{14},varargin{15},varargin{16},varargin{17},varargin{18},varargin{19},varargin{20}));
+                        
                     end
                     if ~s.doCombos
                         paramLength = length(s.pixPerCycs);

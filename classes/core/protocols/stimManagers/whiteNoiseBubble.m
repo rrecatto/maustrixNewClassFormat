@@ -1,4 +1,4 @@
-classdef whiteNoiseBubble
+classdef whiteNoiseBubble<stimManager
     
     properties
         distribution = [];
@@ -39,7 +39,7 @@ classdef whiteNoiseBubble
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'whiteNoiseBubble',stimManager());
+                    
                 case 1
                     % if input is of this class type
                     if (isa(varargin{1},'whiteNoiseBubble'))
@@ -241,7 +241,7 @@ classdef whiteNoiseBubble
                         error('whiteNoiseBubble requires numFrames to be infinite. the actual num frames is set by calcStim');
                     end
 
-                    s = class(s,'whiteNoiseBubble',stimManager(varargin{9},varargin{10},varargin{11},varargin{12}));
+                    
                 otherwise
                     error('invalid number of input arguments');
             end

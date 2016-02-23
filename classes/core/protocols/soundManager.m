@@ -4,6 +4,9 @@ classdef soundManager
         clips={};   
         player=[];
         boundaries=[];
+        playing = [];
+        looping = false;
+        clipDurs = [];
     end
     
     methods
@@ -29,7 +32,6 @@ classdef soundManager
             t.playing=[];
             t.looping=false;
             t.clipDurs=zeros(1,length(t.clips));
-            t = class(t,'soundManager');
         end
         
         function sm=addSound(sm,clip,station)

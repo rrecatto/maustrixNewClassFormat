@@ -173,4 +173,7 @@ else
     stationSpec.portSpec.arduinoON = false;
 end
 
+stationSpec.responseMethod = 'Keyboard'; % #####
+stationSpec.numPorts = 3; % #####
+stationSpec.screenNum = 1;
 st=station(stationSpec);

@@ -1,4 +1,4 @@
-classdef nTrialsThenWait
+classdef nTrialsThenWait<scheduler
     
     properties
         possibleNumTrials=0;
@@ -20,7 +20,7 @@ classdef nTrialsThenWait
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'nTrialsThenWait',scheduler());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'nTrialsThenWait'))
@@ -54,7 +54,7 @@ classdef nTrialsThenWait
                     s.isOn=1;
                     s.lastCompletedSessionEndTime=0;
 
-                    s = class(s,'nTrialsThenWait',scheduler());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

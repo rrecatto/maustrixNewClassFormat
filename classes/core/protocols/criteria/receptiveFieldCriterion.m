@@ -1,4 +1,4 @@
-classdef receptiveFieldCriterion
+classdef receptiveFieldCriterion<criterion
 
     properties
         alpha = 0.05;
@@ -19,7 +19,7 @@ classdef receptiveFieldCriterion
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'receptiveFieldCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'receptiveFieldCriterion'))
@@ -69,7 +69,7 @@ classdef receptiveFieldCriterion
                     else
                         error('numberSpotsAllowed must be a scalar');
                     end
-                    s = class(s,'receptiveFieldCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

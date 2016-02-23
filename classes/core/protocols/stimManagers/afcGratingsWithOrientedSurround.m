@@ -1,4 +1,4 @@
-classdef afcGratingsWithOrientedSurround
+classdef afcGratingsWithOrientedSurround<stimManager
 
     properties
         pixPerCycsCenter = [];
@@ -67,7 +67,7 @@ classdef afcGratingsWithOrientedSurround
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'afcGratingsWithOrientedSurround',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'afcGratingsWithOrientedSurround'))
@@ -318,7 +318,7 @@ classdef afcGratingsWithOrientedSurround
                         end
                     end
 
-                    s = class(s,'afcGratingsWithOrientedSurround',stimManager(maxWidth,maxHeight,scaleFactor,interTrialLuminance));
+                    
                 otherwise
                     nargin
                     error('Wrong number of input arguments')

@@ -1,4 +1,4 @@
-classdef rateCriterion
+classdef rateCriterion<criterion
 
     properties
         trialsPerMin=0;
@@ -13,7 +13,7 @@ classdef rateCriterion
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'rateCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'rateCriterion'))
@@ -28,7 +28,7 @@ classdef rateCriterion
                     else
                         error('trialsPerMin and consecutiveMins must be >= 0')
                     end
-                    s = class(s,'rateCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

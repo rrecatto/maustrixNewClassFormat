@@ -1,4 +1,4 @@
-classdef randomBursts
+classdef randomBursts<scheduler
     %UNTITLED25 Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -15,7 +15,7 @@ classdef randomBursts
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'randomBursts',scheduler());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'randomBursts'))
@@ -30,7 +30,7 @@ classdef randomBursts
                     else
                         error('minsPerBurst and burstsPerDay must be >= 0')
                     end
-                    s = class(s,'randomBursts',scheduler());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

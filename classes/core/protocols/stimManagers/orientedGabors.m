@@ -1,4 +1,4 @@
-classdef orientedGabors
+classdef orientedGabors<stimManager
     
     properties
         pixPerCycs = [];
@@ -31,7 +31,7 @@ classdef orientedGabors
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'orientedGabors',stimManager());
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -102,8 +102,6 @@ classdef orientedGabors
                             end
                         end
                     end
-
-                    s = class(s,'orientedGabors',stimManager(varargin{9},varargin{10},varargin{11},varargin{12}));
 
                 otherwise
                     error('Wrong number of input arguments')

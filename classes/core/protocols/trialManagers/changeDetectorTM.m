@@ -1,4 +1,4 @@
-classdef changeDetectorTM
+classdef changeDetectorTM<trialManager
     
     properties
     end
@@ -15,7 +15,7 @@ classdef changeDetectorTM
                     % if no input arguments, create a default object
                     a=trialManager();
                     t.percentCatchTrials=0;
-                    t = class(t,'changeDetectorTM',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -55,7 +55,7 @@ classdef changeDetectorTM
 
                     a=trialManager(varargin{1},varargin{3},args{4},d,args{5},args{6},args{7},args{8},args{9},args{10},args{11},args{12});
 
-                    t = class(t,'changeDetectorTM',a);
+                    
 
                 otherwise
                     nargin

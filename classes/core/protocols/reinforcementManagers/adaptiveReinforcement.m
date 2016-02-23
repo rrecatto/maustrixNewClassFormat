@@ -1,4 +1,4 @@
-classdef adaptiveReinforcement
+classdef adaptiveReinforcement<reinforcementManager
 
     properties
         rewardSizeULorMS=0;
@@ -34,8 +34,6 @@ classdef adaptiveReinforcement
                         error('Input argument is not a adaptiveReinforcement object')
                     end
                 case 14
-                    r = class(r,'adaptiveReinforcement',...
-                        reinforcementManager(varargin{4},varargin{8},varargin{7},varargin{5},varargin{6},varargin{2},varargin{3}));
                     r = setRewardSizeULorMS(r,varargin{1});
                     r.minReward = varargin{9};
                     r.minPenalty = varargin{10};

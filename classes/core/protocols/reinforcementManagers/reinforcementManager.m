@@ -26,9 +26,7 @@ classdef reinforcementManager
             %       'all' means all requests are rewarded
             switch nargin
                 case 0
-                    % if no input arguments, create a default object
-
-                    r = class(r,'reinforcementManager');
+                    % if no input arguments, create a default obj
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'reinforcementManager'))
@@ -84,8 +82,6 @@ classdef reinforcementManager
                     else
                         error('requestMode must be ''first'',''nonrepeats'',or ''all''');
                     end
-
-                    r = class(r,'reinforcementManager');
 
                 otherwise
                     error('Wrong number of input arguments')
@@ -196,7 +192,7 @@ classdef reinforcementManager
                 end
             catch ex
                 if strcmp(ex.identifier,'MATLAB:UndefinedFunction')
-                    class(rm)    
+                    
                     warning(sprintf('can''t set %s for reinforcementManager of this class',param))
                 else
                     param=param

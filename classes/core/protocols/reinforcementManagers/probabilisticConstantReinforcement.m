@@ -1,4 +1,4 @@
-classdef probabilisticConstantReinforcement
+classdef probabilisticConstantReinforcement<reinforcementManager
     
     properties
         rewardSizeULorMS=0;
@@ -15,7 +15,7 @@ classdef probabilisticConstantReinforcement
                     % if no input arguments, create a default object
 
 
-                    r = class(r,'probabilisticConstantReinforcement',reinforcementManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'probabilisticConstantReinforcement'))
@@ -24,8 +24,7 @@ classdef probabilisticConstantReinforcement
                         error('Input argument is not a probabilisticConstantReinforcement object')
                     end
                 case 9
-                    r = class(r,'probabilisticConstantReinforcement',...
-                        reinforcementManager(varargin{5},varargin{9},varargin{8},varargin{6},varargin{7},varargin{3},varargin{4}));
+                    
                     r = setRewardSizeULorMSAndRewardProbability(r,varargin{1},varargin{2});
                 otherwise
                     error('Wrong number of input arguments')

@@ -1,4 +1,4 @@
-classdef changeDetectorSM
+classdef changeDetectorSM<stimManager
     %UNTITLED4 Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -24,7 +24,7 @@ classdef changeDetectorSM
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'changeDetectorSM',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'changeDetectorSM'))
@@ -77,7 +77,7 @@ classdef changeDetectorSM
                         error('changeDetectorSM:wrongDurationType','durationAfterFlip should be a scalar or should a struct of appropriate type');
                     end
 
-                    s = class(s,'changeDetectorSM',stimManager(maxWidth,maxHeight,scaleFactor,interTrialLuminance));
+                    
 
                 otherwise
                     nargin

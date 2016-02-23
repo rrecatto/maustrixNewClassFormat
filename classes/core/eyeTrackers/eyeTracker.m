@@ -15,7 +15,7 @@ classdef eyeTracker
             % et = eyeTracker(requiresCalibration,[framesPerAllocationChunk], isCalibrated, isTracking)
             switch nargin
                 case 0
-                    et = class(et,'eyeTracker');
+                    
                 case {1 2}
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'eyeTracker'))
@@ -38,7 +38,7 @@ classdef eyeTracker
                         et.isTracking=false;
                         et.eyeDataPath=[];     %this is set at run-time by initialize
                         et.sessionFileName=[]; %this is set at run-time by start
-                        et = class(et,'eyeTracker');
+                        
                     else
                         error('Input argument is not a eyeTracker object')
                     end
@@ -90,7 +90,7 @@ classdef eyeTracker
             gaze(allEmpty,:)=[];
 
             %make struct
-            eyeTrackerClass=class(et);
+            
             eyeTracker=structize(et);
 
             fileName=sprintf('eyeRecords_%d_%s',trialNum,datestr(trialStartTime,30));

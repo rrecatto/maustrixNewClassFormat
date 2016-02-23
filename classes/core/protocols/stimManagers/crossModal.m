@@ -1,4 +1,4 @@
-classdef crossModal
+classdef crossModal<stimManager
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -17,7 +17,6 @@ classdef crossModal
         modalitySwitchParameter = []; %  []      200                2                    1
         modalitySwitchMethod = []; % 'Alternating' 'Random'
         modalityTimeStarted = [];
-        trialNum = [];
         audioStimulus = []; % Where to store the calculated audioStimulus
         % Hold the underlying component stim managers
         hemifieldFlicker = [];
@@ -64,7 +63,7 @@ classdef crossModal
             % if no input arguments, create a default object
                 s.hemifieldFlicker = hemifieldFlicker();
                 s.stereoDiscrim = stereoDiscrim();
-                s = class(s,'crossModal',stimManager());    
+                
             case 1
             % if single argument of this class type, return it
                 if (isa(varargin{1},'crossModal'))
@@ -86,7 +85,7 @@ classdef crossModal
                 s.hemifieldFlicker = hemifieldFlicker(varargin{i},varargin{i+1},varargin{i+2},varargin{i+3},varargin{i+4},varargin{i+5},varargin{i+6},...
                     varargin{i+7},varargin{i+8},varargin{i+9},varargin{i+12},varargin{i+13},varargin{i+14},varargin{i+15});
                 s.stereoDiscrim = stereoDiscrim(varargin{i+5},varargin{i+10},varargin{i+11},varargin{i+12},varargin{i+13},varargin{i+14},varargin{i+15});
-                s = class(s,'crossModal',stimManager(varargin{i+12},varargin{i+13},varargin{i+14},varargin{i+15}));   
+                
 
             otherwise
                 error('Wrong number of input arguments')

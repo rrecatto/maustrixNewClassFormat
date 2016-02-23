@@ -19,7 +19,7 @@ classdef pumpSystem
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'pumpSystem');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'pumpSystem'))
@@ -56,7 +56,7 @@ classdef pumpSystem
                         error('zones and pump must not contain any identical valve or sensor bits')
                     end
 
-                    s = class(s,'pumpSystem');
+                    
 
                 otherwise
                     error('Wrong number of input arguments')

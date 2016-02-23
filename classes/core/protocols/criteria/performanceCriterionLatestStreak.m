@@ -1,4 +1,4 @@
-classdef performanceCriterionLatestStreak
+classdef performanceCriterionLatestStreak<criterion
     %UNTITLED6 Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -20,7 +20,7 @@ classdef performanceCriterionLatestStreak
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'performanceCriterionLatestStreak',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'performanceCriterionLatestStreak'))
@@ -38,7 +38,7 @@ classdef performanceCriterionLatestStreak
                     else
                         error('0<=pctCorrect<=1 and consecutiveTrials must be an integer >= 1')
                     end
-                    s = class(s,'performanceCriterionLatestStreak',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

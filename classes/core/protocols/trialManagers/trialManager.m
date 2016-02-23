@@ -41,7 +41,6 @@ classdef trialManager
                 case 0
                     % if no input arguments, create a default object
 
-                    t = class(t,'trialManager');
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'trialManager'))
@@ -199,8 +198,6 @@ classdef trialManager
                             error('showText must be logical or aproved string, or empty');
                         end
                     end
-
-                    t = class(t,'trialManager');
 
 
                 otherwise
@@ -465,8 +462,10 @@ classdef trialManager
             % p - current training protocol
             % t - current training step index
             % ts - current trainingStep object
-
-            if isa(station,'station') && isa(stimManager,'stimManager') && isa(r,'ratrix') && isa(subject,'subject') && ((isempty(rn) && strcmp(getRewardMethod(station),'localTimed')) || isa(rn,'rnet'))
+            if isempty(rn)
+                rn = rnet(); % #####
+            end
+            if isa(station,'station') && isa(stimManager,'stimManager') && isa(r,'ratrix') && isa(subject,'subject') && ((isempty(rn) && strcmp(station.rewardMethod,'localTimed')) || isa(rn,'rnet'))
                 if stationOKForTrialManager(trialManager,station)
 
                     if ~isempty(rn)
@@ -893,7 +892,7 @@ classdef trialManager
                     error('no ratrix')
                 end
                 if ~isa(rn, 'rnet') && isempty(rn)
-                    error('no rnet %s', getRewardMethod(station))
+                    error('no rnet %s', station.rewardMethod)
                 end
                 if ~isa(rn, 'rnet')
                     error('non-empty rnet %s', getRewardMethod(station))

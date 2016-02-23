@@ -59,7 +59,7 @@ classdef rnetcommand
             c.command = jc.command;
             c.arguments = jc.getArguments();
             if nargin > 0
-                c = class(c,'rnetcommand');
+                
             end
         end
         

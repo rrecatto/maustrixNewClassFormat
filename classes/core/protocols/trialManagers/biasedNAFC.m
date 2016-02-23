@@ -1,4 +1,4 @@
-classdef biasedNAFC
+classdef biasedNAFC<trialManager
     
     properties
         bias = 0;
@@ -15,7 +15,7 @@ classdef biasedNAFC
                 case 0
                     % if no input arguments, create a default object
                     a=nAFC();
-                    t = class(t,'biasedNAFC',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -35,7 +35,7 @@ classdef biasedNAFC
 
                     a=nAFC(varargin{2:end});
 
-                    t = class(t,'biasedNAFC',a);
+                    
 
                 otherwise
                     nargin

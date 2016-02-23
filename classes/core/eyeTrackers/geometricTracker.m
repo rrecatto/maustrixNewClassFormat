@@ -52,7 +52,7 @@ classdef geometricTracker
                     % if no input arguments, create a default object
                     
                     requiresCalibration = true;
-                    et = class(et,'geometricTracker',eyeLinkTracker(requiresCalibration,10000));
+                    
 
             %       et.hackScaleFactor=[];    % should be 1 for normal function.  Increases "camera resolution."  Acts like 1/Rp.
                 case 1
@@ -162,7 +162,7 @@ classdef geometricTracker
                     et.humanConfirmation=false;
 
                     requiresCalibration = true;
-                    et = class(et,'geometricTracker',eyeLinkTracker(requiresCalibration,varargin{end}));
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

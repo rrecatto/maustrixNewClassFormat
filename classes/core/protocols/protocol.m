@@ -15,7 +15,7 @@ classdef protocol
                 case 0
                     % if no input arguments, create a default object
 
-                    p = class(p,'protocol');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'protocol'))
@@ -33,7 +33,7 @@ classdef protocol
                         error('need array of trainingSteps')
                     end
                     p.loopedTS = false;
-                    p = class(p,'protocol');
+                    
                 case 3
                     p.id=varargin{1};
                     %     keyboard
@@ -44,7 +44,7 @@ classdef protocol
                         error('need array of trainingSteps')
                     end
                     p.loopedTS = varargin{3};
-                    p = class(p,'protocol');
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

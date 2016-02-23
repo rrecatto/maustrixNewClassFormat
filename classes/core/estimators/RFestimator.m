@@ -205,7 +205,7 @@ classdef RFestimator
                     error('dateRange must be a 2-element vector specifying a valid range')
                 end
 
-                RFe=class(RFe,'RFestimator');
+                
 
             otherwise
                 error('unsupported number of input arguments');

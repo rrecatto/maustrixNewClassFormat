@@ -70,13 +70,13 @@ classdef ratrix
         
         function r=addStationToBoxID(r,s,b)
             bx=getBoxFromID(r,b);
-            if isa(s,'station') && ~isempty(bx) && checkPath(getPath(s))
-                if isempty(getStationByID(r,getID(s)))
+            if isa(s,'station') && ~isempty(bx) && checkPath(s.path)
+                if isempty(getStationByID(r,s.id))
                     if isempty(getStationsForBoxID(r,b)) || all(getPhysicalLocationForBoxID(r,b)==getPhysicalLocation(s))
                         %TODO: should also check that no other boxes are at this
                         %physical location
                         
-                        if isempty(getStationByMACaddress(r,getMACaddress(s)))
+                        if isempty(getStationByMACaddress(r,s.MACAddress))
                             r.assignments{b}{1}{end+1,1}=s;
                             r.assignments{b}{1}{end,2}=0;
                             saveDB(r,0);
@@ -358,7 +358,6 @@ classdef ratrix
                         else
                             disp('loading existing db')
                             startTime=GetSecs();
-                            keyboard
                             saved=load(r.dbpath,'-mat');
                             disp(sprintf('done loading ratrix db: %g s elapsed',GetSecs()-startTime))
                             
@@ -510,7 +509,8 @@ classdef ratrix
             for i=1:length(r.boxes)
                 assigns=r.assignments{getID(r.boxes{i})}{1};
                 for j=1:size(assigns,1)
-                    if strcmp(getID(assigns{j,1}),sid) %changed from sid's being ints and checking w/==
+                    stComp = assigns{j,1};
+                    if strcmp(stComp.id,sid) %changed from sid's being ints and checking w/==
                         if found
                             error('found multiple references to station')
                         else
@@ -637,7 +637,8 @@ classdef ratrix
             for bx=1:length(r.assignments)
                 if ~isempty(r.assignments{bx})
                     for st=1:size(r.assignments{bx}{1},1)
-                        if strcmp(getID(r.assignments{bx}{1}{st,1}),id) %changed from sid's being ints and checking w/==
+                        stComp = (r.assignments{bx}{1}{st,1});
+                        if strcmp(stComp.id,id) %changed from sid's being ints and checking w/==
                             if found
                                 error('found multiple stations with that id')
                             else
@@ -1363,11 +1364,8 @@ classdef ratrix
             end
         end
         
-    end
-    
-    methods (Static)
-        function out=authorCheck(~,author)
-            approved={'bas'};
+        function out=authorCheck(r,author) %stupid that all functions in an object directory have to be methods (we don't need ratrix for this)
+            approved={'edf','pmm','pr','ratrix','bs','unspecified','aw','dd','sm','bas'};
             if ismember(author,approved)
                 out=1;
             else
@@ -1376,6 +1374,7 @@ classdef ratrix
                 warning('author must be one of above')
             end
         end
+        
     end
     
     methods (Access = protected)
@@ -1395,7 +1394,7 @@ classdef ratrix
                 
                 doIt=0;
                 
-                if isempty(found)==0
+                if isempty(found)
                     warning('didn''t find existing database, writing new one')
                     doIt=1;
                 elseif length(found)==1
@@ -1673,5 +1672,7 @@ classdef ratrix
                 error('not a box object')
             end
         end
+        
+        
     end
 end

@@ -1,4 +1,4 @@
-classdef flatHazard
+classdef flatHazard<delayManager
 
     properties
         percentile=[];
@@ -18,7 +18,7 @@ classdef flatHazard
                 case 0
                     % if no input arguments, create a default object
                     a=delayManager('flatHazard function');
-                    f = class(f,'flatHazard',a);
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'flatHazard'))
@@ -46,7 +46,7 @@ classdef flatHazard
                         error('fixedDelayMs must be numeric');
                     end
                     a=delayManager('flatHazard function');
-                    f = class(f,'flatHazard',a);
+                    
                 otherwise
                     nargin
                     error('wrong number of input arguments');

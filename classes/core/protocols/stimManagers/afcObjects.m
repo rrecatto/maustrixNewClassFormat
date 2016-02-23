@@ -1,4 +1,4 @@
-classdef afcObjects
+classdef afcObjects<stimManager
  
     properties
         shape = [];
@@ -49,7 +49,7 @@ classdef afcObjects
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'afcObjects',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'afcObjects'))
@@ -238,7 +238,7 @@ classdef afcObjects
                     else
                         s.doPostDiscrim = false;
                     end
-                    s = class(s,'afcObjects',stimManager(maxWidth,maxHeight,scaleFactor,interTrialLuminance));
+                    
                 otherwise
                     nargin
                     error('Wrong number of input arguments')

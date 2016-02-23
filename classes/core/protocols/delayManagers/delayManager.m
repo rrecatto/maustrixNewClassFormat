@@ -17,14 +17,14 @@ classdef delayManager
                 case 0
                     % if no input arguments, create a default object
 
-                    f = class(f,'delayManager');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'delayManager'))
                         f = varargin{1};
                     elseif ischar(varargin{1})
                         f.label=varargin{1};
-                        f = class(f,'delayManager');
+                        
                     else
                         error('Input argument is not a delayManager object')
                     end

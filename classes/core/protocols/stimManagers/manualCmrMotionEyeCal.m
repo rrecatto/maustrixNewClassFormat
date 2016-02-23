@@ -1,4 +1,4 @@
-classdef manualCmrMotionEyeCal
+classdef manualCmrMotionEyeCal<stimManager
     
     properties
         background=[];
@@ -24,7 +24,7 @@ classdef manualCmrMotionEyeCal
                 case 0
                     % if no input arguments, create a default object
 
-                    s = class(s,'manualCmrMotionEyeCal',stimManager());
+                    
                 case 1
                     % if input is of this class type
                     if (isa(varargin{1},'manualCmrMotionEyeCal'))
@@ -48,7 +48,7 @@ classdef manualCmrMotionEyeCal
                         error('numSweeps must be a positive integer');
                     end
 
-                    s = class(s,'manualCmrMotionEyeCal',stimManager(varargin{3},varargin{4},varargin{5},varargin{6}));
+                    
                 otherwise
                     error('invalid number of input arguments');
             end

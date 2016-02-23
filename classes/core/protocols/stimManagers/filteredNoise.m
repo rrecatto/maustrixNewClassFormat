@@ -1,4 +1,4 @@
-classdef filteredNoise
+classdef filteredNoise<stimManager
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -56,7 +56,7 @@ classdef filteredNoise
 
             switch nargin
                 case 0  % if no input arguments, create a default object
-                    s = class(s,'filteredNoise',stimManager());
+                    
                 case 1
                     if (isa(varargin{1},'filteredNoise'))	% if single argument of this class type, return it
                         s = varargin{1};
@@ -248,7 +248,7 @@ classdef filteredNoise
                             s.(fieldNames{i})={in.(fieldNames{i})};
                         end
 
-                        s = class(s,'filteredNoise',stimManager(varargin{2},varargin{3},varargin{4},varargin{5}));
+                        
                     else
                         required=fieldNames'
                         have=fields(varargin{1})

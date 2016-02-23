@@ -1,4 +1,4 @@
-classdef cuedCoherentDots
+classdef cuedCoherentDots<stimManager
     
     properties
         screen_width = 100;         % for matrix
@@ -45,7 +45,7 @@ classdef cuedCoherentDots
             case 0 
             % if no input arguments, create a default object
 
-            s = class(s,'cuedCoherentDots',stimManager());
+            
 
             case 1
             % if single argument of this class type, return it
@@ -189,11 +189,11 @@ classdef cuedCoherentDots
 
                 % maxWidth, maxHeight, scale factor, intertrial luminance
                 if isempty(args{16})
-                    s = class(s,'cuedCoherentDots',stimManager(varargin{12},varargin{13},screen_zoom,uint8(0)));   
+                    
                 else
                     % check intertrial luminance
                     if args{16} >=0 && args{16} <= 1
-                        s = class(s,'cuedCoherentDots',stimManager(varargin{12},varargin{13},screen_zoom,uint8(args{16}*intmax('uint8'))));
+                        
                     else
                         error('interTrialLuminance must be <=1 and >=0 - will be converted to a uint8 0-255');
                     end

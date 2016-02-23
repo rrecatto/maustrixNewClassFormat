@@ -1,4 +1,4 @@
-classdef asymetricReinforcement
+classdef asymetricReinforcement<reinforcementManager
 
     properties
         hitRewardSizeULorMS=0;
@@ -16,7 +16,7 @@ classdef asymetricReinforcement
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    r = class(r,'asymetricReinforcement',reinforcementManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'asymetricReinforcement'))
@@ -57,8 +57,6 @@ classdef asymetricReinforcement
                     %the super class stores the larger which is what setReinforcementParam will change... typically the only non-zero value. 
                     %msPuff=NaN; % should add asymetric puffs  (to support air in face on fa, not on miss), in which case pass in NAN to super class
                     msPuff=varargin{11};
-                    r = class(r,'asymetricReinforcement',...
-                        reinforcementManager(msPenalty,msPuff,varargin{10},varargin{8}, varargin{9}, varargin{5}, varargin{6}));
                        %(msPenalty, msPuff, scalar, fractionOpenTimeSoundIsOn, fractionPenaltySoundIsOn, requestRewardSizeULorMS, requestMode)
                 otherwise
                     nargin

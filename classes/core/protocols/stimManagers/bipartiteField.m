@@ -1,4 +1,4 @@
-classdef bipartiteField
+classdef bipartiteField<stimManager
     
     properties
         receptiveFieldLocation=[];
@@ -22,7 +22,7 @@ classdef bipartiteField
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'bipartiteField',stimManager());
+                    
                 case 1
                     % if input is of this class type
                     if (isa(varargin{1},'bipartiteField'))
@@ -60,7 +60,7 @@ classdef bipartiteField
                     else
                         error('repetitions must be a scalar');
                     end
-                    s = class(s,'bipartiteField',stimManager(varargin{5},varargin{6},varargin{7},varargin{8}));
+                    
 
                 otherwise
                     error('invalid number of input arguments');

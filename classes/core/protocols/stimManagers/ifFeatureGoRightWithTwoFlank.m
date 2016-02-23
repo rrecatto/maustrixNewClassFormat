@@ -1,4 +1,4 @@
-classdef ifFeatureGoRightWithTwoFlank
+classdef ifFeatureGoRightWithTwoFlank<stimManager
     
     properties
         pixPerCycs = [];
@@ -170,7 +170,7 @@ classdef ifFeatureGoRightWithTwoFlank
                     %     s.goLeftStim = zeros(2,2,1);
                     %     s.flankerStim =zeros(2,2,1);
 
-                    s = class(s,'ifFeatureGoRightWithTwoFlank',stimManager());
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -4732,7 +4732,7 @@ classdef ifFeatureGoRightWithTwoFlank
                 s.thresh = 0;
                 s.yPosPct = 0; 
 
-                s = class(s,'orientedGabors',stimManager());   
+                
 
             case 1
             % if single argument of this class type, return it
@@ -4787,7 +4787,7 @@ classdef ifFeatureGoRightWithTwoFlank
                     error('yPositionPercent must be numeric')
                 end
 
-                s = class(s,'orientedGabors',stimManager(varargin{9},varargin{10},varargin{11},varargin{12}));   
+                
 
             otherwise
                 error('Wrong number of input arguments')

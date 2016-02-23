@@ -31,7 +31,7 @@ classdef pump
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    p = class(p,'pump');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'pump'))
@@ -101,7 +101,7 @@ classdef pump
                         error('motorRunningBit, infTooFarBit, and wdrTooFarBit must be unique {''hexPPortAddr'', int8 pin ID btw 1-17}')
                     end
 
-                    p = class(p,'pump');
+                    
 
                 otherwise
                     error('Wrong number of input arguments')

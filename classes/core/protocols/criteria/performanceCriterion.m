@@ -1,4 +1,4 @@
-classdef performanceCriterion
+classdef performanceCriterion<criterion
 
     properties
     end
@@ -18,7 +18,7 @@ classdef performanceCriterion
                     % if no input arguments, create a default object
                     s.pctCorrect=0;
                     s.consecutiveTrials=0;
-                    s = class(s,'performanceCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'performanceCriterion'))
@@ -36,7 +36,7 @@ classdef performanceCriterion
                     else
                         error('0<=pctCorrect<=1 and consecutiveTrials must be an integer >= 1')
                     end
-                    s = class(s,'performanceCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

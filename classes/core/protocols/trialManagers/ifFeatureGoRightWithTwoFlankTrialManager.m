@@ -1,4 +1,4 @@
-classdef ifFeatureGoRightWithTwoFlankTrialManager
+classdef ifFeatureGoRightWithTwoFlankTrialManager<trialManager
     
     properties
         maxWidth=[];
@@ -141,7 +141,7 @@ classdef ifFeatureGoRightWithTwoFlankTrialManager
 
                     size(fields(t))
 
-                    t = class(t,'ifFeatureGoRightWithTwoFlankTrialManager',trialManager());
+                    
                     %ToDo: t = class(t,'ifFeatureGoRightWithTwoFlankTrialManager',nAFC(super.xxx,super.xxx));
 
                 case 1
@@ -205,9 +205,8 @@ classdef ifFeatureGoRightWithTwoFlankTrialManager
                     delayManager=[];
                     responseWindowMs=[];
                     showText=true;
-                    t = class(parameterStructure,'ifFeatureGoRightWithTwoFlankTrialManager',trialManager(...
-                        super.soundMgr,reinforcementMgr,eyeController,customDescription,frameDropCorner,dropFrames,displayMethod,requestPorts,saveDetailedFramedrops,delayManager,responseWindowMs,showText)...
-                        );
+                    
+                       
 
                     %%Note: calcStim of this class requires some util functions:
                     %     function

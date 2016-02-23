@@ -1,4 +1,4 @@
-classdef constantDelay
+classdef constantDelay<delayManager
     
     properties
         value=[];
@@ -14,7 +14,7 @@ classdef constantDelay
                 case 0
                     % if no input arguments, create a default object
                     a=delayManager('constantDelay function');
-                    f = class(f,'constantDelay',a);
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'constantDelay'))
@@ -22,7 +22,7 @@ classdef constantDelay
                     elseif isnumeric(varargin{1}) && length(varargin{1})==1
                         f.value=varargin{1};
                         a=delayManager('constantDelay function');
-                        f=class(f,'constantDelay',a);
+                        
                     else
                         error('Input argument is not a constantDelay object or numeric value')
                     end

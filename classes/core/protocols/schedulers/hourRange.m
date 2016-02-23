@@ -1,5 +1,5 @@
-classdef hourRange
-    
+classdef hourRange<scheduler
+  
     properties
         startHour=0;
         endHour=0;
@@ -13,7 +13,7 @@ classdef hourRange
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'hourRange',scheduler());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'hourRange'))
@@ -28,7 +28,7 @@ classdef hourRange
                     else
                         error('startHour must be >=0 and endHour must be <=24')
                     end
-                    s = class(s,'hourRange',scheduler());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

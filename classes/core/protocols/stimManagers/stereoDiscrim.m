@@ -1,4 +1,4 @@
-classdef stereoDiscrim
+classdef stereoDiscrim<stimManager
     
     properties
         mean = 0;
@@ -24,7 +24,7 @@ classdef stereoDiscrim
             switch nargin
             case 0 
             % if no input arguments, create a default object
-                s = class(s,'stereoDiscrim',stimManager());    
+                
             case 1
             % if single argument of this class type, return it
                 if (isa(varargin{1},'stereoDiscrim'))
@@ -52,7 +52,7 @@ classdef stereoDiscrim
                     error('require two stereo amplitudes and they must be >= 0')
                 end
 
-                s = class(s,'stereoDiscrim',stimManager(varargin{4},varargin{5},varargin{6},varargin{7}));   
+                
 
             otherwise
                 error('Wrong number of input arguments')

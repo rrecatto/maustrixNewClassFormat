@@ -1,4 +1,4 @@
-classdef afcCoherentDots
+classdef afcCoherentDots<stimManager
     
     properties
         numDots = {100,100};                      % Number of dots to display
@@ -63,7 +63,7 @@ classdef afcCoherentDots
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'afcCoherentDots',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'afcCoherentDots'))
@@ -403,7 +403,7 @@ classdef afcCoherentDots
                     end
 
 
-                    s = class(s,'afcCoherentDots',stimManager(maxWidth,maxHeight,scaleFactor,interTrialLuminance));
+                    
                 otherwise
                     nargin
                     error('Wrong number of input arguments')

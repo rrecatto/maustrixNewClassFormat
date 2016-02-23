@@ -1,4 +1,4 @@
-classdef orientedCenterSurround
+classdef orientedCenterSurround<stimManager
     
     properties
         pixPerCycs = {};
@@ -65,7 +65,7 @@ classdef orientedCenterSurround
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'orientedCenterSurround',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'orientedCenterSurround'))
@@ -75,7 +75,7 @@ classdef orientedCenterSurround
                     end
                 case {18 19 20 21}
 
-                    s = class(s,'gratings',stimManager(varargin{15},varargin{16},varargin{17},varargin{18}));
+                    
 
                 otherwise
                     nargin

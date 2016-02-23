@@ -1,4 +1,4 @@
-classdef fullField
+classdef fullField<stimManager
     
     properties
         contrasts=[];
@@ -50,7 +50,7 @@ classdef fullField
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'fullField',stimManager());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'fullField'))
@@ -234,7 +234,7 @@ classdef fullField
                         error('cannot set changeableAnnulusCentre and changeableRadusCentre to true at the same time');
                     end
 
-                    s = class(s,'fullField',stimManager(varargin{11},varargin{12},varargin{13},varargin{14}));
+                    
 
                 otherwise
                     nargin

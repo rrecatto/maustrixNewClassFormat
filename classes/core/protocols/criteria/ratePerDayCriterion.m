@@ -1,4 +1,4 @@
-classdef ratePerDayCriterion
+classdef ratePerDayCriterion<criterion
 
     properties
         trialsPerDay=0;
@@ -13,7 +13,7 @@ classdef ratePerDayCriterion
             switch nargin
                 case 0
                     % if no input arguments, create a default object
-                    s = class(s,'ratePerDayCriterion',criterion());
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'ratePerDayCriterion'))
@@ -28,7 +28,7 @@ classdef ratePerDayCriterion
                     else
                         error('trialsPerDay and consecutiveDays must be >= 0')
                     end
-                    s = class(s,'ratePerDayCriterion',criterion());
+                    
                 otherwise
                     error('Wrong number of input arguments')
             end

@@ -1,6 +1,7 @@
-classdef nAFC
+classdef nAFC<trialManager
     
     properties
+        percentCorrectionTrials=0;
     end
     
     methods
@@ -14,8 +15,7 @@ classdef nAFC
                 case 0
                     % if no input arguments, create a default object
                     a=trialManager();
-                    t.percentCorrectionTrials=0;
-                    t = class(t,'nAFC',a);
+                    
 
                 case 1
                     % if single argument of this class type, return it
@@ -51,8 +51,6 @@ classdef nAFC
                     end
 
                     a=trialManager(varargin{1},varargin{3},args{4},d,args{5},args{6},args{7},args{8},args{9},args{10},args{11},args{12});
-
-                    t = class(t,'nAFC',a);
 
                 otherwise
                     nargin
@@ -95,7 +93,7 @@ classdef nAFC
         
         function out=stationOKForTrialManager(t,s)
             if isa(s,'station')
-                out = getNumPorts(s)>=3;
+                out = s.numPorts>=3;
             else
                 error('need a station object')
             end

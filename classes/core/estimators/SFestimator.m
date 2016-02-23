@@ -75,7 +75,7 @@ classdef SFestimator
                     SFe.dateRange = varargin{3};
                 end
 
-                SFe=class(SFe,'SFestimator');
+                
 
             otherwise
                 error('unsupported number of input arguments');

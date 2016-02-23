@@ -45,8 +45,6 @@ if ~exist('testMode','var') || isempty(testMode)
     testMode = false;
 end
 
-setParamsForSubject();
-
 if exist('ratrixPath','var') && ~isempty(ratrixPath)
     if isdir(ratrixPath)
         rx=ratrix(ratrixPath,0);

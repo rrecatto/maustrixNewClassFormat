@@ -96,7 +96,7 @@ classdef rnet
 
             if nargin==1 && isa(varargin{1},'rnet')
                 r = varargin{1};
-            elseif ischar(varargin{1})
+            elseif nargin>0 && ischar(varargin{1})
                 type = varargin{1};
                 switch(nargin)
                     case 0
@@ -174,7 +174,7 @@ classdef rnet
                         errror('Invalid number of arguments to rnet');
                 end
 
-                r = class(r,'rnet');
+                
             else
                 error('First argument to rnet should be type');
             end

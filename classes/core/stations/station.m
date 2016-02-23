@@ -8,6 +8,7 @@ classdef station
         MACAddress = '';
         physicalLocation = [];
         numPorts = 0;
+        rewardMethod='';
         responseMethod = 'Keyboard';
     end
     
@@ -29,20 +30,20 @@ classdef station
                 case 1
                     in = varargin{1};
                     
-                    validateattributes(in.id,{'numeric'},{'integer','positive'})
+                    %validateattributes(in.id,{'numeric'},{'integer','positive'})#####
                     st.id = in.id;
                     
                     validateattributes(in.path,{'char'},{'nonempty'})
                     st.path = in.path;
                     
-                    validateattributes(in.screenNum,{'numeric'},{'integer','positive'})
+                    %validateattributes(in.screenNum,{'numeric'},{'integer','positive'})#####
                     st.screenNum = in.screenNum;
                     
                     validateattributes(in.soundOn,{'logical'},{'numel', 1})
                     st.soundOn = in.soundOn;
                     
-                    validateattributes(in.MACAddress,{'char'},{'nonempty'})
-                    st.MACAddress = in.MACAddress;
+                    validateattributes(in.MACaddress,{'char'},{'nonempty'})
+                    st.MACAddress = in.MACaddress;
                     
                     validateattributes(in.physicalLocation,{'numeric'},{'positive','vector','numel',3})
                     st.physicalLocation = in.physicalLocation;
@@ -102,7 +103,7 @@ classdef station
             end
         end
         
-        function [r, exitByFinishingTrialQuota]=doTrials(s,r,n,trustOsRecordFiles)
+        function [r, exitByFinishingTrialQuota]=doTrials(s,r,n,rn,trustOsRecordFiles)
             %this will doTrials on station=(s) of ratrix=(r).
             %n=number of trials, where 0 means repeat indefinitely
             %rn is a ratrix network object, which only the server uses, otherwise leave empty
@@ -115,7 +116,6 @@ classdef station
                 trustOsRecordFiles=false;
             end
             exitByFinishingTrialQuota = false;
-            validateattribute(r,{'ratrix'},{'nonempty'});
             
             if ~isempty(getStationByID(r,s.id))
                 
@@ -219,6 +219,7 @@ classdef station
                 s=stopPTB(s);
                 
                 Screen('Resolution', s.screenNum, res.width, res.height, res.hz, res.pixelSize);
+
                 s=startPTB(s,imagingTasks);
                 imagingTasksApplied=imagingTasks; % is there a way to confirm they took effect?
                 
@@ -234,25 +235,25 @@ classdef station
         end % end function
         
         function s=startPTB(s,imagingTasks)
-            
+
             clear Screen;
             Screen('Screens');
             try
-                
+
                 if ~exist('imagingTasks','var') || isempty('imagingTasks')
                     imagingTasks=[]; % default mode does not require any tasks for the imaging pipeline
                 end
-                
+
                 AssertOpenGL;
                 %Screen('Preference','Backgrounding',0);  %mac only?
                 HideCursor;
-                
+
                 Screen('Preference', 'SkipSyncTests', 0);
-                
+
                 Screen('Preference', 'VisualDebugLevel', 6);
                 %http://psychtoolbox.org/wikka.php?wakka=FaqWarningPrefs
                 %Level 4 is most thorough, level 1 is errors only.
-                
+
                 % http://groups.yahoo.com/group/psychtoolbox/message/4292
                 % A new Preference setting Screen('Preference', 'VisualDebugLevel',level);
                 % allows to customize the visual warning and feedback signals that can show up during Screen('OpenWindow')
@@ -263,9 +264,9 @@ classdef station
                 % 4 shows the blue screen at startup
                 % 5 enables the visual flicker test-sheet on multi-display setups
                 % By default, level 6 is selected -- all warnings, bells & whistles on.
-                
+
                 Screen('Preference', 'SuppressAllWarnings', 0);
-                
+
                 Screen('Preference', 'Verbosity', 4);
                 %http://psychtoolbox.org/wikka.php?wakka=FaqWarningPrefs
                 %0) Disable all output - Same as using the 'SuppressAllWarnings' flag.
@@ -274,24 +275,25 @@ classdef station
                 %3) Output startup information and a bit of additional information. This is the default.
                 %4) Be pretty verbose about information and hints to optimize your code and system.
                 %5) Levels 5 and higher enable very verbose debugging output, mostly useful for debugging PTB itself, not generally useful for end-users.
-                
+
                 Screen('Preference', 'ConserveVRAM', 4); % added by BAS. conserves VRAM levels to prevent weiird errors XXXX remove this if there is a problem
-                
-                
+
+
                 preScreen=GetSecs();
                 if isempty(imagingTasks)
                     % do not do this even if you "know" what you are doing
-                    %         PsychImaging('PrepareConfiguration');
-                    %         PsychImaging('AddTask', 'AllViews', 'GeometryCorrection', 'C:\Documents and Settings\Owner\Application Data\Psychtoolbox\GeometryCalibration\SphereCalibdata_0_1600_1200.mat');
-                    %
-                    %         s.window = PsychImaging('OpenWindow',s.screenNum,0);%,[],32,2);  %%color, rect, depth, buffers (none can be changed in basic version)
-                    s.window = Screen('OpenWindow',s.screenNum,0);%,[],32,2);  %%color, rect, depth, buffers (none can be changed in basic version)
-                    
+            %         PsychImaging('PrepareConfiguration');
+            %         PsychImaging('AddTask', 'AllViews', 'GeometryCorrection', 'C:\Documents and Settings\Owner\Application Data\Psychtoolbox\GeometryCalibration\SphereCalibdata_0_1600_1200.mat');
+            %         [windowPtr,rect]=Screen('OpenWindow',windowPtrOrScreenNumber [,color] [,rect][,pixelSize][,numberOfBuffers][,stereomode][,multisample][,imagingmode][,specialFlags][,clientRect]);
+            %         s.window = PsychImaging('OpenWindow',s.screenNum,0);%,[],32,2);  %%color, rect, depth, buffers (none can be changed in basic version)
+
+                    [s.window,~] = Screen('OpenWindow',s.screenNum);%,[],32,2);  %%color, rect, depth, buffers (none can be changed in basic version)
+
                 else
-                    
+
                     warning('edf says: have you checked that the stopPTB will remove these tasks?  i see no evidence that you clean up after yourself if a later trial doesn''t want these things.  a clear Screen may help, but i want proof.  it''s not stated in ''help psychimaging'' -- worst case, ask mario.  also, i don''t see that you''ve been careful to make sure the pipeline details are recorded in the trial record.')
                     %well, i guess it's relatively convincing that you get a unique window pointer out of it, so i'm downgrading to a warning...
-                    
+
                     PsychImaging('PrepareConfiguration');
                     % PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible'); %enable general support of such tasks
                     %6/2/09 - add imagingTasks to the pipeline
@@ -314,11 +316,11 @@ classdef station
                     s.imagingTasks=imagingTasks;
                 end
                 disp(sprintf('took %g to call screen(openwindow)',GetSecs()-preScreen))
-                
+
                 res=Screen('Resolution', s.screenNum);
-                
+
                 s.ifi = Screen('GetFlipInterval',s.window);%,200); %numSamples
-                
+
                 if res.hz~=0
                     if abs((s.ifi/(1/res.hz))-1)>.1
                         s.ifi
@@ -333,23 +335,23 @@ classdef station
                     %[x.hz]
                     warning('screen(resolution) reporting 0 hz -- calcStims must take this into account (this happens on osx)')
                 end
-                
+
                 texture=Screen('MakeTexture', s.window, BlackIndex(s.window));
                 [resident texidresident] = Screen('PreloadTextures', s.window);
-                
+
                 if resident ~= 1
                     disp(sprintf('error: blank texture not cached'));
                     find(texidresident~=1)
                 end
-                
+
                 Screen('DrawTexture', s.window, texture,[],Screen('Rect', s.window),[],0);
                 Screen('DrawingFinished',s.window,0);
-                
+
                 Screen('Flip',s.window);
-                
+
                 Screen('Close'); %leaving off second argument closes all textures
-                
-            catch ex
+
+            catch ex                  
                 s.ifi=[];
                 s.window=[];
                 Screen('CloseAll');
@@ -399,7 +401,7 @@ classdef station
         end
         
         function s = set.soundOn(s,val)
-            validateattributes(val,{'boolean'},{'nonempty','numel',1});
+            %validateattributes(val,{'boolean'},{'nonempty','numel',1});#####
             s.soundOn = val;
         end
     end

@@ -16,7 +16,7 @@ classdef stimManager
                 case 0
                     % if no input arguments, create a default object
                     
-                    s = class(s,'stimManager');
+                    
                 case 1
                     % if single argument of this class type, return it
                     if (isa(varargin{1},'stimManager'))
@@ -62,8 +62,6 @@ classdef stimManager
                     else
                         error('either numeric background only or cell with background and duration')
                     end
-
-                    s = class(s,'stimManager');
                 otherwise
                     error('Wrong number of input arguments')
             end
