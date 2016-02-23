@@ -463,7 +463,7 @@ classdef trialManager
             % t - current training step index
             % ts - current trainingStep object
             if isempty(rn)
-                rn = rnet(); % #####
+                rn = rnet('server'); % #####
             end
             if isa(station,'station') && isa(stimManager,'stimManager') && isa(r,'ratrix') && isa(subject,'subject') && ((isempty(rn) && strcmp(station.rewardMethod,'localTimed')) || isa(rn,'rnet'))
                 if stationOKForTrialManager(trialManager,station)
